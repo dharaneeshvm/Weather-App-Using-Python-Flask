@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>🌤 Weather Application</h2>
+
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter City Name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        {% if weather == "City not found" %}
+            <p class="error">City not found. Try again!</p>
+        {% else %}
+        <div class="card">
+            <h3>{{ weather.city }}</h3>
+            <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png">
+            <p><strong>Temperature:</strong> {{ weather.temperature }}°C</p>
+            <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+            <p><strong>Condition:</strong> {{ weather.description }}</p>
+        </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+</body>
+</html>
